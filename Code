@@ -1,0 +1,26 @@
+import cv2
+import numpy as np
+
+# Función para manejar el evento de clic del mouse
+def mouse_callback(event, x, y, flags, param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        print("Posición del clic: (X={}, Y={})".format(x, y))
+
+# Carga la imagen
+image_path = 'pxcm/e8.png'  # Reemplaza con la ruta de tu imagen
+image = cv2.imread(image_path)
+
+# Crea una ventana para mostrar la imagen
+cv2.namedWindow('Imagen')
+cv2.imshow('Imagen', image)
+
+# Configura la función de devolución de llamada del mouse
+cv2.setMouseCallback('Imagen', mouse_callback)
+
+# Espera a que se presione la tecla 'Esc' para salir
+while True:
+    if cv2.waitKey(1) == 27:  # 27 es el código ASCII para la tecla 'Esc'
+        break
+
+# Cierra todas las ventanas
+cv2.destroyAllWindows()
